@@ -1,23 +1,30 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 import joblib
 import numpy as np
 
-app = Flask(__name__)
-model = joblib.load('bike_rental_model.pkl')  # This will work now
+app = Flask(name)
+model = joblib.load("bike_rental_model.pkl")
 
-@app.route('/')
+@app.route("/")
 def home():
-    return "Bike Rental Prediction API is running!"
+    return render_template("index.html")
 
-@app.route('/predict', methods=['POST'])
+@app.route("/predict", methods=["POST"])
 def predict():
-    try:
-        data = request.get_json(force=True)
-        input_data = np.array([list(data.values())])
-        prediction = model.predict(input_data)
-        return jsonify({'prediction': prediction[0]})
-    except Exception as e:
-        return jsonify({'error': str(e)})
-
-if __name__ == '__main__':
-    app.run(host = "0.0.0.0" , port = 5000)
+    if request.method == "POST":
+        data = [
+            float(request.form["season"]),
+            float(request.form["yr"]),
+            float(request.form["mnth"]),
+            float(request.form["holiday"]),
+            float(request.form["weekday"]),
+            float(request.form["workingday"]),
+            float(request.form["weathersit"]),
+            float(request.form["temp"]),
+            float(request.form["atemp"]),
+            float(request.form["hum"]),
+            float(request.form["windspeed"])
+        ]
+        features = np.array([data])
+        prediction = model.predict(features)
+        return render_template("index.html", prediction=round(prediction[0], 2))
