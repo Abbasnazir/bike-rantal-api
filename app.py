@@ -7,7 +7,7 @@ model = joblib.load("bike_rental_model.pkl")
 
 @app.route("/")
 def home():
-    return render_template("index.html")
+    return render_template("index.html" , form = {})
 
 @app.route("/predict", methods=["POST"])
 def predict():
