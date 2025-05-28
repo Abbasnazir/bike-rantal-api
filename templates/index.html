@@ -1,32 +1,74 @@
-<label>Season (1–4):</label>
-<input type="number" name="season" min="1" max="4" required><br><br>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bike Rental Predictor</title>
+</head>
+<body>
+    <h2>🚲 Bike Rental Demand Predictor</h2>
+    <form action="/predict" method="post">
 
-<label>Year (0 or 1):</label>
-<input type="number" name="yr" min="0" max="1" required><br><br>
+        <label>Season:</label>
+        <select name="season" required>
+            <option value="1">Spring</option>
+            <option value="2">Summer</option>
+            <option value="3">Fall</option>
+            <option value="4">Winter</option>
+        </select><br><br>
 
-<label>Month (1–12):</label>
-<input type="number" name="mnth" min="1" max="12" required><br><br>
+        <label>Year (0=2011, 1=2012):</label>
+        <input type="number" name="yr" min="0" max="1" required><br><br>
 
-<label>Holiday (0 or 1):</label>
-<input type="number" name="holiday" min="0" max="1" required><br><br>
+        <label>Month:</label>
+        <select name="mnth" required>
+            <option value="1">January</option>
+            <option value="2">February</option>
+            <option value="3">March</option>
+            <option value="4">April</option>
+            <option value="5">May</option>
+            <option value="6">June</option>
+            <option value="7">July</option>
+            <option value="8">August</option>
+            <option value="9">September</option>
+            <option value="10">October</option>
+            <option value="11">November</option>
+            <option value="12">December</option>
+        </select><br><br>
 
-<label>Weekday (0–6):</label>
-<input type="number" name="weekday" min="0" max="6" required><br><br>
+        <label>Holiday (0 = No, 1 = Yes):</label>
+        <input type="number" name="holiday" min="0" max="1" required><br><br>
 
-<label>Workingday (0 or 1):</label>
-<input type="number" name="workingday" min="0" max="1" required><br><br>
+        <label>Weekday (0=Sunday ... 6=Saturday):</label>
+        <input type="number" name="weekday" min="0" max="6" required><br><br>
 
-<label>Weather (1–4):</label>
-<input type="number" name="weathersit" min="1" max="4" required><br><br>
+        <label>Working Day (0 = No, 1 = Yes):</label>
+        <input type="number" name="workingday" min="0" max="1" required><br><br>
 
-<label>Temp (0.0–1.0):</label>
-<input type="number" step="0.01" min="0" max="1" name="temp" required><br><br>
+        <label>Weather Situation (1–4):</label>
+        <select name="weathersit" required>
+            <option value="1">Clear or Partly Cloudy</option>
+            <option value="2">Misty or Cloudy</option>
+            <option value="3">Light Snow or Rain</option>
+            <option value="4">Heavy Rain, Snow or Fog</option>
+        </select><br><br>
 
-<label>Atemp (0.0–1.0):</label>
-<input type="number" step="0.01" min="0" max="1" name="atemp" required><br><br>
+        <label>Temperature (°C):</label>
+        <input type="number" step="0.1" name="temp" min="0" max="50" required><br><br>
 
-<label>Humidity (0.0–1.0):</label>
-<input type="number" step="0.01" min="0" max="1" name="hum" required><br><br>
+        <label>Feels Like Temp (°C):</label>
+        <input type="number" step="0.1" name="atemp" min="0" max="50" required><br><br>
 
-<label>Windspeed (0.0–1.0):</label>
-<input type="number" step="0.01" min="0" max="1" name="windspeed" required><br><br>
+        <label>Humidity (%):</label>
+        <input type="number" step="1" name="hum" min="0" max="100" required><br><br>
+
+        <label>Windspeed (km/h):</label>
+        <input type="number" step="0.1" name="windspeed" min="0" max="50" required><br><br>
+
+        <input type="submit" value="🔍 Predict">
+    </form>
+
+    {% if prediction %}
+        <h3>📈 Predicted Rentals: {{ prediction }}</h3>
+    {% endif %}
+</body>
+</html>
+
