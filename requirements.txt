@@ -31,7 +31,7 @@ psutil==7.0.0
 pure_eval==0.2.3
 Pygments==2.19.1
 pymongo==4.13.0
-python-dateutil==2.8.2.post0
+python-dateutil==2.8.2
 pytz==2025.2
 pywin32==310
 pyzmq==26.4.0
