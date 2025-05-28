@@ -1,0 +1,78 @@
+ Project Report: Bike Rental Prediction API
+Project Summary:
+This project builds a machine learning model to predict bike rental demand based on input features like weather, season, and working day. The final model (Random Forest Regressor) is deployed using a Flask API.
+
+---
+
+ Workflow Overview:
+
+1. Data Cleaning:
+- Loaded dataset
+- Checked for missing values (none found)
+- Selected relevant features
+
+2. Model Training:
+- Trained two models: Linear Regression and Random Forest
+- Evaluated using MSE, RMSE, and R² Score
+- Random Forest showed better performance
+
+3. Model Saving:
+- Saved the trained Random Forest model as bike_rental_model.pkl using Joblib
+
+4. Flask API Development:
+- Created a Flask API (app.py) with 2 routes:
+  - / — Welcome route
+  - /predict — Accepts POST requests with input JSON and returns predicted bike rental count
+
+5. API Testing:
+- Tested the /predict endpoint using Postman
+- Confirmed working prediction response
+
+---
+ Example Input (to /predict):
+`json
+{
+  "season": 1,
+  "yr": 1,
+  "mnth": 1,
+  "holiday": 0,
+  "weekday": 6,
+  "workingday": 0,
+  "weathersit": 2,
+  "temp": 0.2,
+  "atemp": 0.212,
+  "hum": 0.8,
+  "windspeed": 0.1
+}
+
+{
+      "predection" : 1710.68 
+}
+
+
+6. Tools and libraries used :
+- Python
+- Pandas
+- NumPy
+- Scikit-learn
+- Flask
+- Joblib
+- Postman
+
+7. Project  Structure : 
+bike_rental_api/
+├── app.py
+├── bike_rental_model.pkl
+└── project_report.txt
+├── README.md
+├── requirements.txt
+
+8. Status :
+All steps completed 
+Models trained and saved 
+Api tested and working 
+Documentation added
+
+9. Created by :
+Abbas nazir
+Date: 28 May 2025
