@@ -4,10 +4,10 @@ from flask import Flask, request, jsonify, render_template
 import joblib
 import numpy as np
 
-app = Flask(name)
+app = Flask(__name__)
 model = joblib.load("bike_rental_model.pkl")
 
-@app.route('/')
+@app.route("/")
 def home():
     return render_template("index.html")
 
@@ -36,5 +36,5 @@ def predict():
         except Exception as e:
             return render_template("index.html", prediction_text=f'Error: {str(e)}')
 
-if name == "main":
+if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
