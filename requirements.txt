@@ -33,7 +33,6 @@ Pygments==2.19.1
 pymongo==4.13.0
 python-dateutil==2.8.2
 pytz==2025.2
-pywin32==310
 pyzmq==26.4.0
 scikit-learn==1.6.1
 scipy==1.15.3
