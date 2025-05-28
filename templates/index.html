@@ -1,28 +1,32 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Bike Rental Predictor</title>
-</head>
-<body>
-    <h2>Bike Rental Demand Predictor</h2>
-    <form action="/predict" method="post">
-        <label>Season:</label><input type="number" name="season"><br><br>
-        <label>Year:</label><input type="number" name="yr"><br><br>
-        <label>Month:</label><input type="number" name="mnth"><br><br>
-        <label>Holiday:</label><input type="number" name="holiday"><br><br>
-        <label>Weekday:</label><input type="number" name="weekday"><br><br>
-        <label>Workingday:</label><input type="number" name="workingday"><br><br>
-        <label>Weather:</label><input type="number" name="weathersit"><br><br>
-        <label>Temp:</label><input type="text" name="temp"><br><br>
-        <label>Atemp:</label><input type="text" name="atemp"><br><br>
-        <label>Humidity:</label><input type="text" name="hum"><br><br>
-        <label>Windspeed:</label><input type="text" name="windspeed"><br><br>
+<label>Season (1–4):</label>
+<input type="number" name="season" min="1" max="4" required><br><br>
 
-        <input type="submit" value="🔍 Predict">
-    </form>
+<label>Year (0 or 1):</label>
+<input type="number" name="yr" min="0" max="1" required><br><br>
 
-    {% if prediction %}
-        <h3>📈 Predicted Rentals: {{ prediction }}</h3>
-    {% endif %}
-</body>
-</html>
+<label>Month (1–12):</label>
+<input type="number" name="mnth" min="1" max="12" required><br><br>
+
+<label>Holiday (0 or 1):</label>
+<input type="number" name="holiday" min="0" max="1" required><br><br>
+
+<label>Weekday (0–6):</label>
+<input type="number" name="weekday" min="0" max="6" required><br><br>
+
+<label>Workingday (0 or 1):</label>
+<input type="number" name="workingday" min="0" max="1" required><br><br>
+
+<label>Weather (1–4):</label>
+<input type="number" name="weathersit" min="1" max="4" required><br><br>
+
+<label>Temp (0.0–1.0):</label>
+<input type="number" step="0.01" min="0" max="1" name="temp" required><br><br>
+
+<label>Atemp (0.0–1.0):</label>
+<input type="number" step="0.01" min="0" max="1" name="atemp" required><br><br>
+
+<label>Humidity (0.0–1.0):</label>
+<input type="number" step="0.01" min="0" max="1" name="hum" required><br><br>
+
+<label>Windspeed (0.0–1.0):</label>
+<input type="number" step="0.01" min="0" max="1" name="windspeed" required><br><br>
