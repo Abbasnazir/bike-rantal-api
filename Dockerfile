@@ -10,7 +10,7 @@ COPY . /app
 # Install required packages
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Expose port Flask will run on
+# Exposing port Flask will run on
 EXPOSE 5000
 
 
